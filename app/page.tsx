@@ -1,245 +1,178 @@
 import Link from "next/link"
-import {
-  ArrowRight,
-  Phone,
-  Mail,
-  MapPin,
-  ShieldCheck,
-  Truck,
-  Factory,
-  Award,
-  Building2,
-  Pickaxe,
-  Layers,
-  Square,
-  Hammer,
-  Construction,
-} from "lucide-react"
+import { ArrowRight, CheckCircle2, Phone, MapPin, Mail, Truck, Award, Factory, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
-const products = [
-  {
-    icon: Layers,
-    name: "Agglos",
-    description:
-      "Blocs de béton de haute qualité, idéaux pour la construction de murs porteurs et de cloisons.",
-  },
-  {
-    icon: Pickaxe,
-    name: "Agrégats",
-    description:
-      "Sable, gravier et granulats issus de nos carrières pour tous types de chantiers BTP.",
-  },
-  {
-    icon: Square,
-    name: "Bordures",
-    description:
-      "Bordures en béton préfabriquées pour aménagement urbain, voirie et trottoirs.",
-  },
-  {
-    icon: Building2,
-    name: "Hourdis",
-    description:
-      "Hourdis en béton pour planchers, alliant légèreté, résistance et isolation.",
-  },
-  {
-    icon: Hammer,
-    name: "Pavés",
-    description:
-      "Pavés autobloquants décoratifs et résistants pour vos espaces extérieurs.",
-  },
-  {
-    icon: Construction,
-    name: "Poutrelles",
-    description:
-      "Poutrelles précontraintes pour planchers, conformes aux normes en vigueur.",
-  },
-]
-
-const features = [
-  {
-    icon: ShieldCheck,
-    title: "Qualité Certifiée",
-    description: "Produits conformes aux normes marocaines et internationales.",
-  },
-  {
-    icon: Factory,
-    title: "Production Locale",
-    description: "Usine moderne à Marrakech, capacité de production élevée.",
-  },
-  {
-    icon: Truck,
-    title: "Livraison Rapide",
-    description: "Flotte dédiée pour livrer vos chantiers dans les délais.",
-  },
-  {
-    icon: Award,
-    title: "Filiale SYAM Holding",
-    description: "Adossée à un groupe solide avec expérience reconnue.",
-  },
-]
+import { Card, CardContent } from "@/components/ui/card"
 
 export default function HomePage() {
   return (
-    <>
+    <div className="bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-secondary via-background to-secondary border-b border-border">
-        <div className="container mx-auto px-4 py-20 md:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-3 py-1 text-xs font-medium text-muted-foreground mb-6">
-                <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                Filiale de SYAM Holding · Marrakech
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-                Solutions <span className="text-primary">préfabriquées</span> en béton & carrières
-              </h1>
-              <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-                CARRIPREFA est spécialisée dans la production d&apos;agglos, agrégats,
-                bordures, hourdis, pavés et poutrelles pour les professionnels du BTP au Maroc.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg">
-                  <Link href="/commande">
-                    Passer commande <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/products">Voir nos produits</Link>
-                </Button>
-              </div>
-              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-                <a href="tel:+212524013334" className="flex items-center gap-2 hover:text-foreground">
-                  <Phone className="h-4 w-4" /> +212 524 013 334
-                </a>
-                <a href="mailto:contact@carriprefa.com" className="flex items-center gap-2 hover:text-foreground">
-                  <Mail className="h-4 w-4" /> contact@carriprefa.com
-                </a>
-              </div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white">
+        <div className="absolute inset-0 opacity-15">
+          <img
+            src="https://carriprefa.com/wp-content/uploads/2023/06/motif-cp.png"
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-2 md:py-28 md:px-8">
+          <div className="flex flex-col justify-center">
+            <span className="mb-4 inline-block w-fit rounded-full bg-white/15 px-4 py-1 text-sm font-medium backdrop-blur">
+              Filiale du Groupe SYAM Holding
+            </span>
+            <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+              CARRIPRÉFA
+            </h1>
+            <p className="mt-4 text-xl font-light text-blue-50 md:text-2xl">
+              Solutions Préfabriquées en Béton & Carrières
+            </p>
+            <p className="mt-6 max-w-xl text-blue-100">
+              Spécialiste de la préfabrication béton et de l'exploitation de carrières à Marrakech.
+              Plus de 15 ans d'expérience au service de la construction au Maroc.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50">
+                <Link href="/commande">
+                  Passer Commande <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-700">
+                <Link href="/products">Nos Produits</Link>
+              </Button>
             </div>
-            <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-border shadow-xl bg-secondary">
-                <img
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80"
-                  alt="Construction préfabriquée"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-background border border-border rounded-xl shadow-lg p-4 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-md bg-primary/10 text-primary flex items-center justify-center">
-                  <Factory className="h-5 w-5" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Usine moderne</div>
-                  <div className="text-xs text-muted-foreground">Km 14, Route de Safi</div>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div className="hidden items-center justify-center md:flex">
+            <img
+              src="https://carriprefa.com/wp-content/uploads/2023/06/logo-cp.png"
+              alt="CARRIPREFA logo"
+              className="max-h-80 w-auto rounded-xl bg-white/95 p-8 shadow-2xl"
+            />
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16 md:py-20 border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((f) => (
-              <div key={f.title} className="text-center">
-                <div className="mx-auto h-12 w-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3">
-                  <f.icon className="h-6 w-6" />
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="grid gap-6 md:grid-cols-4">
+            {[
+              { icon: Award, title: "Qualité Certifiée", desc: "Normes marocaines strictes" },
+              { icon: Factory, title: "Production Locale", desc: "Usine à Marrakech" },
+              { icon: Truck, title: "Livraison Rapide", desc: "Toute la région" },
+              { icon: Users, title: "Équipe Expérimentée", desc: "15+ ans d'expertise" },
+            ].map((f, i) => (
+              <div key={i} className="rounded-xl border border-blue-100 bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-50">
+                  <f.icon className="h-7 w-7 text-blue-700" />
                 </div>
-                <div className="font-semibold">{f.title}</div>
-                <div className="text-sm text-muted-foreground mt-1">{f.description}</div>
+                <h3 className="font-semibold text-blue-900">{f.title}</h3>
+                <p className="mt-1 text-sm text-slate-600">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Products */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-sm font-semibold text-primary mb-2">NOS PRODUITS</div>
-            <h2 className="text-3xl md:text-4xl font-bold">Une gamme complète de préfabriqués</h2>
-            <p className="mt-4 text-muted-foreground">
-              Découvrez notre catalogue de produits en béton pour tous vos projets de construction.
-            </p>
+      {/* Products Preview */}
+      <section className="bg-blue-50/40 py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-blue-900 md:text-4xl">Nos Produits</h2>
+            <p className="mt-3 text-slate-600">Une gamme complète de solutions préfabriquées en béton</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((p) => (
-              <Card key={p.name} className="hover:shadow-md hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <div className="h-11 w-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3">
-                    <p.icon className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-xl">{p.name}</CardTitle>
-                  <CardDescription>{p.description}</CardDescription>
-                </CardHeader>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Agglos", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", desc: "Blocs en béton creux et pleins" },
+              { name: "Agrégats", img: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=80", desc: "Granulats de carrière" },
+              { name: "Bordures", img: "https://images.unsplash.com/photo-1604079628040-94301bb21b91?w=800&q=80", desc: "Bordures de trottoir" },
+              { name: "Hourdis", img: "https://images.unsplash.com/photo-1590725140246-20acdee442be?w=800&q=80", desc: "Éléments de plancher" },
+              { name: "Pavés", img: "https://images.unsplash.com/photo-1597400154816-d34d52d2b07a?w=800&q=80", desc: "Pavés autobloquants" },
+              { name: "Poutrelles", img: "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?w=800&q=80", desc: "Poutrelles précontraintes" },
+            ].map((p) => (
+              <Card key={p.name} className="overflow-hidden border-blue-100 transition hover:shadow-lg">
+                <div className="aspect-[4/3] overflow-hidden bg-blue-100">
+                  <img src={p.img} alt={p.name} className="h-full w-full object-cover transition duration-500 hover:scale-105" />
+                </div>
+                <CardContent className="p-5">
+                  <h3 className="text-xl font-bold text-blue-900">{p.name}</h3>
+                  <p className="mt-1 text-sm text-slate-600">{p.desc}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Button asChild variant="outline" size="lg">
-              <Link href="/products">
-                Tous nos produits <ArrowRight className="h-4 w-4" />
-              </Link>
+            <Button asChild size="lg" className="bg-blue-700 hover:bg-blue-800">
+              <Link href="/products">Voir tous les produits <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* About / Why */}
+      <section className="bg-white py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-2 md:px-8">
+          <div>
+            <h2 className="text-3xl font-bold text-blue-900 md:text-4xl">Pourquoi CARRIPRÉFA ?</h2>
+            <p className="mt-4 text-slate-600">
+              CARRIPRÉFA, filiale du groupe SYAM Holding, est un acteur de référence dans la production
+              de solutions préfabriquées en béton et l'exploitation de carrières à Marrakech.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {[
+                "Carrières propres à Marrakech",
+                "Usine moderne de préfabrication",
+                "Contrôle qualité rigoureux",
+                "Livraison sur toute la région",
+                "Devis personnalisés rapides",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
+                  <span className="text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Button asChild className="mt-8 bg-blue-700 hover:bg-blue-800">
+              <Link href="/about">En savoir plus</Link>
+            </Button>
+          </div>
+          <div className="overflow-hidden rounded-2xl bg-blue-100">
+            <img
+              src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=1200&q=80"
+              alt="Usine CARRIPREFA"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Un projet ? Demandez votre devis</h2>
-          <p className="mt-4 text-primary-foreground/90 max-w-xl mx-auto">
-            Contactez notre équipe pour un accompagnement personnalisé et un devis adapté à votre chantier.
+      <section className="bg-blue-700 py-16 text-white">
+        <div className="mx-auto max-w-5xl px-4 text-center md:px-8">
+          <h2 className="text-3xl font-bold md:text-4xl">Un projet ? Demandez votre devis</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-blue-100">
+            Notre équipe est à votre écoute pour vous accompagner dans tous vos projets de construction.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild size="lg" variant="secondary">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50">
               <Link href="/commande">Commander maintenant</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-700">
               <Link href="/contact">Nous contacter</Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* Contact info strip */}
-      <section className="py-12 border-t border-border">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex items-start gap-3">
-            <Phone className="h-5 w-5 text-primary mt-1" />
-            <div>
-              <div className="font-semibold">Téléphone</div>
-              <div className="text-sm text-muted-foreground">+212 524 013 334</div>
+          <div className="mt-10 grid gap-6 text-blue-50 sm:grid-cols-3">
+            <div className="flex items-center justify-center gap-2">
+              <Phone className="h-5 w-5" /> +212 524 013 334
             </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <Mail className="h-5 w-5 text-primary mt-1" />
-            <div>
-              <div className="font-semibold">Email</div>
-              <div className="text-sm text-muted-foreground">contact@carriprefa.com</div>
+            <div className="flex items-center justify-center gap-2">
+              <Mail className="h-5 w-5" /> contact@carriprefa.com
             </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <MapPin className="h-5 w-5 text-primary mt-1" />
-            <div>
-              <div className="font-semibold">Adresse</div>
-              <div className="text-sm text-muted-foreground">Route de Safi, Km 14, Marrakech</div>
+            <div className="flex items-center justify-center gap-2">
+              <MapPin className="h-5 w-5" /> Route de Safi Km 14, Marrakech
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
