@@ -3,13 +3,12 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Menu, X, Phone } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
-const navLinks = [
+const links = [
   { href: "/", label: "Accueil" },
-  { href: "/about", label: "À propos" },
   { href: "/products", label: "Produits" },
   { href: "/services", label: "Services" },
+  { href: "/about", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ]
 
@@ -17,68 +16,83 @@ export function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground font-bold">
-            CP
-          </div>
-          <span className="text-lg font-bold tracking-tight">CARRIPREFA</span>
+    <header className="sticky top-0 z-40 w-full border-b border-blue-100 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
+        <Link href="/" className="flex items-center gap-3">
+          <img
+            src="https://carriprefa.com/wp-content/uploads/2023/06/logo-cp.png"
+            alt="CARRIPREFA"
+            className="h-12 w-auto"
+          />
+          <span className="hidden text-lg font-bold text-blue-900 sm:inline">
+            CARRIPRÉFA
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((l) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+              key={l.href}
+              href={l.href}
+              className="text-sm font-medium text-slate-700 transition hover:text-blue-700"
             >
-              {link.label}
+              {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden items-center gap-3 md:flex">
           <a
             href="tel:+212524013334"
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+            className="flex items-center gap-2 text-sm font-medium text-blue-700 hover:text-blue-900"
           >
             <Phone className="h-4 w-4" />
             +212 524 013 334
           </a>
-          <Button asChild size="sm">
-            <Link href="/commande">Commander</Link>
-          </Button>
+          <Link
+            href="/commande"
+            className="rounded-md bg-blue-700 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-800"
+          >
+            Commander
+          </Link>
         </div>
 
         <button
-          className="md:hidden p-2 -mr-2"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          className="rounded-md p-2 text-blue-700 hover:bg-blue-50 md:hidden"
+          aria-label="Menu"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background">
-          <nav className="container mx-auto flex flex-col gap-1 px-4 py-3">
-            {navLinks.map((link) => (
+        <div className="border-t border-blue-100 bg-white md:hidden">
+          <div className="space-y-1 px-4 py-4">
+            {links.map((l) => (
               <Link
-                key={link.href}
-                href={link.href}
+                key={l.href}
+                href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+                className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700"
               >
-                {link.label}
+                {l.label}
               </Link>
             ))}
-            <Button asChild className="mt-2">
-              <Link href="/commande" onClick={() => setOpen(false)}>
-                Commander
-              </Link>
-            </Button>
-          </nav>
+            <a
+              href="tel:+212524013334"
+              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50"
+            >
+              <Phone className="h-4 w-4" /> +212 524 013 334
+            </a>
+            <Link
+              href="/commande"
+              onClick={() => setOpen(false)}
+              className="block rounded-md bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white"
+            >
+              Commander
+            </Link>
+          </div>
         </div>
       )}
     </header>
